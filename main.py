@@ -5,10 +5,10 @@ import json
 def get_disk_info():
     disk_info = DiskInfo()
 
-    result = []
-    for disk in disk_info.get_disk_list():
-        result.append({key.replace('_Disk__', ''): value for key, value in disk.__dict__.items() })
-
+    result = [
+        {key.replace('_Disk__', ''): value for key, value in disk.__dict__.items() }
+        for disk in disk_info.get_disk_list()
+    ]
     result_json = json.dumps(
         obj=result,
         indent=4
