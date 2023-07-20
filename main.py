@@ -3,11 +3,9 @@ import json
 
 
 def get_disk_info():
-    disk_info = DiskInfo()
-
     result = [
         {key.replace('_Disk__', ''): value for key, value in disk.__dict__.items() }
-        for disk in disk_info.get_disk_list()
+        for disk in DiskInfo().get_disk_list()
     ]
     result_json = json.dumps(
         obj=result,
